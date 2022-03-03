@@ -47,11 +47,11 @@ const store = [
 
 const SceneOne = () => {
   const [selectedScene, setSelectedScene] = useState(2)
-  const [canClick, setCanClick] = useState<boolean>(false)
-  const [activeColor, setActiveColor] = useState<string>('')
-  const [activeDailog, setActiveDialog] = useState<boolean>(true)
+  const [canClick, setCanClick] = useState(false)
+  const [activeColor, setActiveColor] = useState('')
+  const [activeDailog, setActiveDialog] = useState(true)
 
-  // const { openQuestDialog, pickNpc } = useGameStore()
+  const { toggleNpcColor, toggleQuestDialog } = useGameStore()
 
   const Hotspots = () => {
     const [canvasCreated, setCanvasCreated] = useState(false)
@@ -92,9 +92,11 @@ const SceneOne = () => {
 
         if (intersects.length > 0) {
           if (canvas2d) {
-            let x = canvas.width * intersects[0].uv.x
-            let y = canvas.height * (1 - intersects[0].uv.y)
-            let pixel = canvas2d.getImageData(x, y, 1, 1).data
+            const { uv } = intersects[0]
+
+            const x = uv ? canvas.width * uv.x : 0
+            const y = uv ? canvas.height * (1 - uv.y) : 0
+            const pixel = canvas2d.getImageData(x, y, 1, 1).data
             //  Calculate color code
             let colorCheck = ''
             colorCheck += pixel[0] > 100 ? '1' : '0'
@@ -104,23 +106,23 @@ const SceneOne = () => {
             switch (colorCheck) {
               case ColorMap.YELLOW:
                 setCanClick(true)
-                setActiveColor('YELLOW')
+                toggleNpcColor(colorCheck)
                 break
               case ColorMap.GREEN:
                 setCanClick(true)
-                setActiveColor('GREEN')
+                toggleNpcColor(colorCheck)
                 break
               case ColorMap.RED:
                 setCanClick(true)
-                setActiveColor('RED')
+                toggleNpcColor(colorCheck)
                 break
               case ColorMap.AQUA:
                 setCanClick(true)
-                setActiveColor('AQUA')
+                toggleNpcColor(colorCheck)
                 break
               case ColorMap.PINK:
                 setCanClick(true)
-                setActiveColor('PINK')
+                toggleNpcColor(colorCheck)
                 break
               default:
                 setCanClick(false)
@@ -131,14 +133,8 @@ const SceneOne = () => {
     }
 
     const handleClick = () => {
-      // TODO: When is it ok to click, where can user close dialog
-      // setActiveDialog(!activeDailog)
+      toggleQuestDialog(true)
     }
-
-    // To see what color is active TODO: remove
-    useEffect(() => {
-      console.log(activeColor)
-    }, [activeColor])
 
     useEffect(() => {
       if (canvasCreated) {
@@ -152,7 +148,11 @@ const SceneOne = () => {
     return (
       <mesh ref={self} scale={[-1, 1, 1]} onClick={() => handleClick()}>
         <sphereBufferGeometry args={[500, 60, 40]} />
-        <meshBasicMaterial map={texture} side={THREE.BackSide} visible={false} />
+        <meshBasicMaterial
+          map={texture}
+          side={THREE.BackSide}
+          visible={false}
+        />
       </mesh>
     )
   }
@@ -171,7 +171,9 @@ const SceneOne = () => {
   const Preload = () => {
     const { gl } = useThree()
     const map = useLoader(THREE.TextureLoader, store[selectedScene].url) // prettier-ignore
-    useEffect(() => gl.initTexture(map), [map])
+    useEffect(() => {
+      gl.initTexture(map)
+    }, [map])
     return null
   }
 

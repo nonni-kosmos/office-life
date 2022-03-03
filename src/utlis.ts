@@ -3,7 +3,7 @@ export enum ColorMap {
   YELLOW = '110',
   RED = '100',
   AQUA = '011',
-  PINK = '101'
+  PINK = '101',
 }
 
 export enum IndexMap {
@@ -11,14 +11,15 @@ export enum IndexMap {
   GREEN = 2,
   RED = 3,
   AQUA = 4,
-  PINK = 5
-
+  PINK = 5,
 }
 
-export enum Colors{
-  YELLOW = "YELLOW",
-  GREEN = "GREEN",
-  RED = "RED",
-  AQUA = "AQUA",
-  PINK = "PINK"
+export enum Colors {
+  YELLOW = 'YELLOW',
+  GREEN = 'GREEN',
+  RED = 'RED',
+  AQUA = 'AQUA',
+  PINK = 'PINK',
 }
+
+export const colorCheck = (s: string) => {}

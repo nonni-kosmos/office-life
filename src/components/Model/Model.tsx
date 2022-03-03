@@ -3,6 +3,7 @@ import { useLoader } from '@react-three/fiber'
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import { INpc } from '../../types'
+import { useGameStore } from '@src/lib/store'
 
 export interface IModel {
   active: boolean
@@ -20,16 +21,15 @@ const Model = ({ active, npc }: IModel) => {
 
   const VISIBLE = 1
 
-  object.scale.set(VISIBLE, VISIBLE, VISIBLE)
+  const { questDialogOpen } = useGameStore()
 
-  useMemo(() => {
-    if (active) {
+  useEffect(() => {
+    if (active && questDialogOpen) {
       object.scale.set(VISIBLE, VISIBLE, VISIBLE)
     } else {
       object.scale.set(0, 0, 0)
     }
-    console.log(active)
-  }, [active])
+  }, [active, questDialogOpen])
 
   return <primitive object={object} />
 }
