@@ -10,14 +10,15 @@ interface IStore {
 export const useGameStore = create<IStore>((set) => ({
   npcColor: null,
   toggleNpcColor: (color: string) =>
-    set(() => ({
-      npcColor: color,
+    set((state) => ({
+      npcColor: state.questDialogOpen ? state.npcColor : color,
     })),
 
   // quest dialog
   questDialogOpen: false,
   toggleQuestDialog: (active) =>
-    set(() => ({
+    set((store) => ({
       questDialogOpen: active,
+      npcColor: !active ? '' : store.npcColor,
     })),
 }))

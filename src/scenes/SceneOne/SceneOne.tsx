@@ -125,6 +125,7 @@ const SceneOne = () => {
                 toggleNpcColor(colorCheck)
                 break
               default:
+                toggleNpcColor('')
                 setCanClick(false)
             }
           }
@@ -133,7 +134,9 @@ const SceneOne = () => {
     }
 
     const handleClick = () => {
-      toggleQuestDialog(true)
+      if (canClick) {
+        toggleQuestDialog(true)
+      }
     }
 
     useEffect(() => {
