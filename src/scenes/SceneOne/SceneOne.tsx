@@ -4,6 +4,8 @@ import { OrbitControls, Loader, Html } from '@react-three/drei'
 import * as THREE from 'three'
 import QuestScene from '../QuestScene'
 import { useGameStore } from '@src/lib/store'
+import { Npcs } from '@src/lib/npcs'
+import { ColorMap, IndexMap, Colors } from '@src/utlis'
 
 const store = [
   {
@@ -45,13 +47,15 @@ const store = [
 
 const SceneOne = () => {
   const [selectedScene, setSelectedScene] = useState(2)
+  const [canClick, setCanClick] = useState<boolean>(false)
+  const [activeColor, setActiveColor] = useState<string>('')
+  const [activeDailog, setActiveDialog] = useState<boolean>(true)
 
-  const { openQuestDialog } = useGameStore()
+  // const { openQuestDialog, pickNpc } = useGameStore()
 
   const Hotspots = () => {
     const [canvasCreated, setCanvasCreated] = useState(false)
     const texture = useLoader(THREE.TextureLoader, store[4].url) // prettier-ignore
-    const [canClick, setCanClick] = useState(false)
     let canvas2d: CanvasRenderingContext2D | null = null
 
     const raycaster = new THREE.Raycaster()
@@ -91,15 +95,35 @@ const SceneOne = () => {
             let x = canvas.width * intersects[0].uv.x
             let y = canvas.height * (1 - intersects[0].uv.y)
             let pixel = canvas2d.getImageData(x, y, 1, 1).data
+            //  Calculate color code
+            let colorCheck = ''
+            colorCheck += pixel[0] > 100 ? '1' : '0'
+            colorCheck += pixel[1] > 100 ? '1' : '0'
+            colorCheck += pixel[2] > 100 ? '1' : '0'
 
-            if (pixel[0] > 0) {
-              // Hit if pixel isn't black
-              setCanClick(true)
-              document.body.style.cursor = 'pointer'
-            } else {
-              // Miss
-              setCanClick(false)
-              document.body.style.cursor = 'grab'
+            switch (colorCheck) {
+              case ColorMap.YELLOW:
+                setCanClick(true)
+                setActiveColor('YELLOW')
+                break
+              case ColorMap.GREEN:
+                setCanClick(true)
+                setActiveColor('GREEN')
+                break
+              case ColorMap.RED:
+                setCanClick(true)
+                setActiveColor('RED')
+                break
+              case ColorMap.AQUA:
+                setCanClick(true)
+                setActiveColor('AQUA')
+                break
+              case ColorMap.PINK:
+                setCanClick(true)
+                setActiveColor('PINK')
+                break
+              default:
+                setCanClick(false)
             }
           }
         }
@@ -107,11 +131,14 @@ const SceneOne = () => {
     }
 
     const handleClick = () => {
-      if (canClick) {
-        // do something
-        openQuestDialog()
-      }
+      // TODO: When is it ok to click, where can user close dialog
+      // setActiveDialog(!activeDailog)
     }
+
+    // To see what color is active TODO: remove
+    useEffect(() => {
+      console.log(activeColor)
+    }, [activeColor])
 
     useEffect(() => {
       if (canvasCreated) {
@@ -125,12 +152,7 @@ const SceneOne = () => {
     return (
       <mesh ref={self} scale={[-1, 1, 1]} onClick={() => handleClick()}>
         <sphereBufferGeometry args={[500, 60, 40]} />
-        <meshBasicMaterial
-          map={texture}
-          side={THREE.BackSide}
-          transparent={true}
-          opacity={0.3}
-        />
+        <meshBasicMaterial map={texture} side={THREE.BackSide} visible={false} />
       </mesh>
     )
   }
@@ -165,11 +187,11 @@ const SceneOne = () => {
         <Preload />
         <Panorama />
 
-        <QuestScene />
+        <QuestScene activeColor={activeColor} activeDialog={activeDailog} />
 
         <Hotspots />
       </Suspense>
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={1} />
       <OrbitControls enableZoom />
     </Canvas>
   )

@@ -1,24 +1,24 @@
 import create from 'zustand'
 
 interface IStore {
-  npcActive: number
-  pickNpc: (idx: number) => void
+  npcColor: string
+  pickNpc: (color: string) => void
   questDialogOpen: boolean
-  openQuestDialog: () => void
+  openQuestDialog: (active: boolean) => void
 }
 
 export const useGameStore = create<IStore>((set) => ({
   // npc logic, -1 is
-  npcActive: 0,
-  pickNpc: (idx) =>
+  npcColor: "",
+  pickNpc: (color) =>
     set(() => ({
-      npcActive: idx,
+      npcColor: color,
     })),
 
   // quest dialog
   questDialogOpen: false,
-  openQuestDialog: () =>
-    set((state) => ({
-      questDialogOpen: !state.questDialogOpen,
+  openQuestDialog: (active) =>
+    set(() => ({
+      questDialogOpen: active,
     })),
 }))
