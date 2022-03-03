@@ -25,7 +25,7 @@ const QuestScene = () => {
   return (
     <>
       <Model active={questDialogOpen} npc={Steini} />
-      <Background />
+      {/* <Background /> */}
     </>
   )
 }
