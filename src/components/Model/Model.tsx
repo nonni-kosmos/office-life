@@ -1,11 +1,9 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect } from 'react'
 import { useLoader, useThree } from '@react-three/fiber'
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import { INpc } from '../../types'
 import { useGameStore } from '@src/lib/store'
-import { Vector3 } from 'three'
-import * as THREE from 'three'
 
 export interface IModel {
   active: boolean
@@ -22,7 +20,6 @@ const Model = ({ active, npc }: IModel) => {
   const { camera } = useThree()
 
   object.rotation.set(npc.position[0], npc.position[1], npc.position[2])
-
   const VISIBLE = npc.scale
 
   const { questDialogOpen, npcColor } = useGameStore()
@@ -35,7 +32,7 @@ const Model = ({ active, npc }: IModel) => {
     } else {
       object.scale.set(0, 0, 0)
     }
-  }, [active, questDialogOpen])
+  }, [active, questDialogOpen, npcColor])
 
   return (
     <>
