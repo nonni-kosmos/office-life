@@ -1,4 +1,4 @@
-import { INpc, ColorNames, ColorNames2 } from '../types'
+import { INpc } from '../types'
 import { ColorMap, IndexMap } from '@src/utlis'
 
 export const npcs: INpc[] = [
@@ -29,7 +29,11 @@ export const npcs: INpc[] = [
       mtl: '/models/npcs/haflidi/model.mtl',
     },
     dialogs: [
-      { question: 'Það verður einhver að bjarga Steina, hann þarf booster eftir fús tap', answer: 'OK' },
+      {
+        question:
+          'Það verður einhver að bjarga Steina, hann þarf booster eftir fús tap',
+        answer: 'OK',
+      },
       { question: 'blab!!!', answer: 'NO' },
     ],
     position: [0.2, -1, -3],

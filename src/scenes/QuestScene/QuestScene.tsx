@@ -1,7 +1,6 @@
 import React from 'react'
 import Model from '@src/components/Model'
 import { useGameStore } from '@src/lib/store'
-import * as THREE from 'three'
 import { INpc } from '../../types'
 interface IQuestScene {
   npcs: INpc[]

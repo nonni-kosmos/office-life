@@ -5,7 +5,6 @@ import * as THREE from 'three'
 import QuestScene from '../QuestScene'
 import { useGameStore } from '@src/lib/store'
 import { npcs, npcsKitchen } from '@src/lib/npcs'
-import { colorCheck, ColorMap } from '@src/utlis'
 
 const store = [
   {
@@ -25,16 +24,8 @@ const store = [
 ]
 
 const SceneOne = () => {
-  const {
-    toggleNpcColor,
-    toggleQuestDialog,
-    activeScene,
-    toggleActiveScene,
-    npcColor,
-    questDialogOpen,
-  } = useGameStore()
-
-  const [currColor, setCurrColor] = useState('000')
+  const { toggleNpcColor, toggleQuestDialog, activeScene, toggleActiveScene } =
+    useGameStore()
 
   const [canClick, setCanClick] = useState(false)
   const [canGoToKitchen, setCanGoToKitchen] = useState(false)

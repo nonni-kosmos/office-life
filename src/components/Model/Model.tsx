@@ -12,7 +12,8 @@ export interface IModel {
 
 const Model = ({ active, npc }: IModel) => {
   const materials = useLoader(MTLLoader, npc.model.mtl)
-  const object = useLoader(OBJLoader, npc.model.obj, (loader) => {
+
+  const object = useLoader(OBJLoader, npc.model.obj, (loader: any) => {
     materials.preload()
 
     loader.setMaterials(materials)
@@ -21,7 +22,7 @@ const Model = ({ active, npc }: IModel) => {
   object.rotation.set(npc.position[0], npc.position[1], npc.position[2])
   const VISIBLE = npc.scale
 
-  const { questDialogOpen, npcColor } = useGameStore()
+  const { questDialogOpen } = useGameStore()
 
   useEffect(() => {
     if (active && questDialogOpen) {
@@ -29,7 +30,7 @@ const Model = ({ active, npc }: IModel) => {
     } else {
       object.scale.set(0, 0, 0)
     }
-  }, [active, questDialogOpen, npcColor])
+  }, [active, questDialogOpen])
 
   return (
     <>
