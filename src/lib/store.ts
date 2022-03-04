@@ -6,7 +6,7 @@ interface IStore {
   questDialogOpen: boolean
   toggleQuestDialog: (active: boolean) => void
   activeScene: number
-  toggleActiveScene: (scene: number) => void
+  toggleActiveScene: () => void
 }
 
 export const useGameStore = create<IStore>((set) => ({
@@ -25,9 +25,9 @@ export const useGameStore = create<IStore>((set) => ({
     })),
 
   // scene
-  activeScene: 1,
-  toggleActiveScene: (activeScene: number) =>
-    set(() => ({
-      activeScene,
+  activeScene: 0,
+  toggleActiveScene: () =>
+    set((store) => ({
+      activeScene: store.activeScene === 0 ? 1 : 0,
     })),
 }))

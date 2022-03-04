@@ -27,7 +27,7 @@ const store = [
 const SceneOne = () => {
   const [canClick, setCanClick] = useState(false)
 
-  const { toggleNpcColor, toggleQuestDialog, activeScene } = useGameStore()
+  const { toggleNpcColor, toggleQuestDialog, activeScene, toggleActiveScene } = useGameStore()
 
   const Hotspots = () => {
     const [canvasCreated, setCanvasCreated] = useState(false)
@@ -100,6 +100,10 @@ const SceneOne = () => {
                 setCanClick(true)
                 toggleNpcColor(colorCheck)
                 break
+                case ColorMap.WHITE:
+                  toggleNpcColor('')
+                  toggleActiveScene()
+                  break
               default:
                 toggleNpcColor('')
                 setCanClick(false)
