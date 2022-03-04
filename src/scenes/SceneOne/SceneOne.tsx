@@ -4,58 +4,35 @@ import { OrbitControls, Loader, Html } from '@react-three/drei'
 import * as THREE from 'three'
 import QuestScene from '../QuestScene'
 import { useGameStore } from '@src/lib/store'
-import { Npcs } from '@src/lib/npcs'
-import { ColorMap, IndexMap, Colors } from '@src/utlis'
+import { npcs, npcsKitchen } from '@src/lib/npcs'
+import { ColorMap } from '@src/utlis'
 
 const store = [
   {
-    name: 'office',
-    color: 'lightpink',
+    name: 'Scene1',
     position: [10, 0, -15],
-    url: '/office-life-three.jpg',
-    link: 0,
+    panoramaUrl: '/office-life-excelent.jpeg',
+    clickZoneUrl: '/color-hotmap.png',
+    npcs: npcs
   },
   {
-    name: 'office2',
-    color: 'lightpink',
+    name: 'Scene2',
     position: [10, 0, -15],
-    url: '/output.jpg',
-    link: 0,
-  },
-  {
-    name: 'office3',
-    color: 'lightpink',
-    position: [10, 0, -15],
-    url: '/office-life-excelent.jpeg',
-    link: 0,
-  },
-  {
-    name: 'office3',
-    color: 'lightpink',
-    position: [10, 0, -15],
-    url: '/office-life-excelent-clickzone.jpeg',
-    link: 0,
-  },
-  {
-    name: 'office4',
-    color: 'lightpink',
-    position: [10, 0, -15],
-    url: '/color-hotmap.png',
-    link: 0,
+    panoramaUrl: '/scene2.jpg',
+    clickZoneUrl: '/scene2-click.jpg',
+    npcs: npcsKitchen
   },
 ]
 
 const SceneOne = () => {
-  const [selectedScene, setSelectedScene] = useState(2)
+  const [selectedScene, setSelectedScene] = useState(1)
   const [canClick, setCanClick] = useState(false)
-  const [activeColor, setActiveColor] = useState('')
-  const [activeDailog, setActiveDialog] = useState(true)
 
   const { toggleNpcColor, toggleQuestDialog } = useGameStore()
 
   const Hotspots = () => {
     const [canvasCreated, setCanvasCreated] = useState(false)
-    const texture = useLoader(THREE.TextureLoader, store[4].url) // prettier-ignore
+    const texture = useLoader(THREE.TextureLoader, store[selectedScene].clickZoneUrl) // prettier-ignore
     let canvas2d: CanvasRenderingContext2D | null = null
 
     const raycaster = new THREE.Raycaster()
@@ -161,7 +138,7 @@ const SceneOne = () => {
   }
 
   const Panorama = () => {
-    const map = useLoader(THREE.TextureLoader, store[selectedScene].url) // prettier-ignore
+    const map = useLoader(THREE.TextureLoader, store[selectedScene].panoramaUrl) // prettier-ignore
 
     return (
       <mesh scale={[-1, 1, 1]}>
@@ -173,10 +150,8 @@ const SceneOne = () => {
 
   const Preload = () => {
     const { gl } = useThree()
-    const map = useLoader(THREE.TextureLoader, store[selectedScene].url) // prettier-ignore
-    useEffect(() => {
-      gl.initTexture(map)
-    }, [map])
+    const map = useLoader(THREE.TextureLoader, store[selectedScene].panoramaUrl) // prettier-ignore
+    useEffect(() => gl.initTexture(map), [map])
     return null
   }
 
@@ -191,8 +166,9 @@ const SceneOne = () => {
       >
         <Preload />
         <Panorama />
+ 
+        <QuestScene npcs={store[selectedScene].npcs}/>
 
-        <QuestScene activeColor={activeColor} activeDialog={activeDailog} />
 
         <Hotspots />
       </Suspense>

@@ -5,6 +5,7 @@ export type Dialoge = {
 }
 
 export type ColorNames = "YELLOW" | "GREEN" | "RED" | "AQUA" | "PINK"
+export type ColorNames2 = "YELLOW" | "AQUA" | "PINK"
 
 export interface INpc {
 

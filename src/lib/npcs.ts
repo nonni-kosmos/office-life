@@ -1,4 +1,4 @@
-import { INpc, ColorNames } from '../types'
+import { INpc, ColorNames, ColorNames2 } from '../types'
 import { ColorMap, IndexMap } from '@src/utlis'
 
 export const npcs: INpc[] = [
@@ -74,14 +74,15 @@ export const npcs: INpc[] = [
   },
 ]
 
-export const Npcs: Record<ColorNames, INpc> = {
-  YELLOW: {
-    name: 'Steini',
+
+export const npcsKitchen: INpc[] = [
+   {
+    name: 'Brian',
     idx: IndexMap.YELLOW,
     color: ColorMap.YELLOW,
     model: {
-      obj: '/models/npcs/steini/model.obj',
-      mtl: '/models/npcs/steini/model.mtl',
+      obj: '/models/npcs/brian/model.obj',
+      mtl: '/models/npcs/brian/model.mtl',
     },
     dialogs: [
       { question: 'blabla?', answer: 'OK' },
@@ -89,41 +90,13 @@ export const Npcs: Record<ColorNames, INpc> = {
     ],
     position: [0.2, -1, -3],
   },
-  GREEN: {
-    name: 'Hafliði',
-    idx: IndexMap.GREEN,
-    color: ColorMap.GREEN,
-    model: {
-      obj: '/models/npcs/haflidi/model.obj',
-      mtl: '/models/npcs/haflidi/model.mtl',
-    },
-    dialogs: [
-      { question: 'blabla?', answer: 'OK' },
-      { question: 'blab!!!', answer: 'NO' },
-    ],
-    position: [0.2, -1, -3],
-  },
-  RED: {
-    name: 'Nonni',
-    idx: IndexMap.RED,
-    color: ColorMap.RED,
-    model: {
-      obj: '/models/npcs/nonni/model.obj',
-      mtl: '/models/npcs/nonni/model.mtl',
-    },
-    dialogs: [
-      { question: 'blabla?', answer: 'OK' },
-      { question: 'blab!!!', answer: 'NO' },
-    ],
-    position: [0.2, -1, -3],
-  },
-  AQUA: {
-    name: 'Sunna',
+ {
+    name: 'paskabjor',
     idx: IndexMap.AQUA,
     color: ColorMap.AQUA,
     model: {
-      obj: '/models/npcs/sunna/model.obj',
-      mtl: '/models/npcs/sunna/model.mtl',
+      obj: '/models/items/paskabjor/bjor.obj',
+      mtl: '/models/items/paskabjor/bjor.mtl',
     },
     dialogs: [
       { question: 'blabla?', answer: 'OK' },
@@ -131,13 +104,13 @@ export const Npcs: Record<ColorNames, INpc> = {
     ],
     position: [0.2, -1, -3],
   },
-  PINK: {
-    name: 'Bjartur',
+  {
+    name: 'stefan',
     idx: IndexMap.PINK,
     color: ColorMap.PINK,
     model: {
-      obj: '/models/npcs/bjartur/model.obj',
-      mtl: '/models/npcs/bjartur/model.mtl',
+      obj: '/models/npcs/stefan/model.obj',
+      mtl: '/models/npcs/stefan/model.mtl',
     },
     dialogs: [
       { question: 'blabla?', answer: 'OK' },
@@ -145,4 +118,5 @@ export const Npcs: Record<ColorNames, INpc> = {
     ],
     position: [0.2, -1, -3],
   },
-}
+]
+
