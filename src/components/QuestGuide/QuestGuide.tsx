@@ -1,11 +1,15 @@
 import React from 'react'
 import { useGameStore } from '@src/lib/store'
-import { npcs } from '@src/lib/npcs'
+import { npcs, npcsKitchen } from '@src/lib/npcs'
 
 const QuestGuide = () => {
-  const { toggleQuestDialog, questDialogOpen, npcColor } = useGameStore()
+  const { toggleQuestDialog, questDialogOpen, npcColor, activeScene } =
+    useGameStore()
 
-  const chosenNpc = npcs.find((npc) => npc.color === npcColor)
+  const chosenNpc =
+    activeScene === 0
+      ? npcs.find((npc) => npc.color === npcColor)
+      : npcsKitchen.find((npc) => npc.color === npcColor)
 
   if (questDialogOpen) {
     return (

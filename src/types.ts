@@ -18,4 +18,6 @@ export interface INpc {
   dialogs: Dialoge[]
   position: number[]
   scale: number
+  translateX?: number
+  translateY?: number
 }

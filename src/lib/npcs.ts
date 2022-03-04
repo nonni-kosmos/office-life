@@ -11,11 +11,14 @@ export const npcs: INpc[] = [
       mtl: '/models/npcs/steini/model.mtl',
     },
     dialogs: [
-      { question: 'blabla?', answer: 'OK' },
+      {
+        question: 'ZZZzzzZZZZzzz...',
+        answer: 'Steini er steinrotaður',
+      },
       { question: 'blab!!!', answer: 'NO' },
     ],
     position: [0.3, -1, -3],
-    scale: 2,
+    scale: 3,
   },
   {
     name: 'Hafliði',
@@ -30,7 +33,7 @@ export const npcs: INpc[] = [
       { question: 'blab!!!', answer: 'NO' },
     ],
     position: [0.2, -1, -3],
-    scale: 1,
+    scale: 2,
   },
   {
     name: 'Nonni',
@@ -49,7 +52,7 @@ export const npcs: INpc[] = [
       { question: 'blab!!!', answer: 'NO' },
     ],
     position: [1, -5, 2],
-    scale: 4,
+    scale: 5,
   },
   {
     name: 'Sunna',
@@ -64,7 +67,7 @@ export const npcs: INpc[] = [
       { question: 'blab!!!', answer: 'NO' },
     ],
     position: [0.2, -3, -3],
-    scale: 2,
+    scale: 3,
   },
   {
     name: 'Bjartur',
@@ -79,7 +82,7 @@ export const npcs: INpc[] = [
       { question: 'blab!!!', answer: 'NO' },
     ],
     position: [0.4, -10, 3],
-    scale: 1.5,
+    scale: 3,
   },
 ]
 
@@ -96,8 +99,8 @@ export const npcsKitchen: INpc[] = [
       { question: 'blabla?', answer: 'OK' },
       { question: 'blab!!!', answer: 'NO' },
     ],
-    position: [0.2, -1, -3],
-    scale: 1.5,
+    position: [0, -3, -3],
+    scale: 5,
   },
   {
     name: 'paskabjor',
@@ -111,7 +114,7 @@ export const npcsKitchen: INpc[] = [
       { question: 'Góður bjór', answer: 'OK' },
       { question: 'blab!!!', answer: 'NO' },
     ],
-    position: [0.2, -1, -3],
+    position: [0, 0, 10],
     scale: 1.5,
   },
   {
@@ -126,7 +129,7 @@ export const npcsKitchen: INpc[] = [
       { question: 'blabla?', answer: 'OK' },
       { question: 'blab!!!', answer: 'NO' },
     ],
-    position: [0.2, -1, -3],
-    scale: 1.5,
+    position: [0.2, -2, -3],
+    scale: 4,
   },
 ]
