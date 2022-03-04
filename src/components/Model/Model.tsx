@@ -23,8 +23,6 @@ const Model = ({ active, npc }: IModel) => {
 
   object.rotation.set(npc.position[0], npc.position[1], npc.position[2])
 
-  object.rotateOnAxis(new THREE.Vector3(), 90)
-
   const VISIBLE = npc.scale
 
   const { questDialogOpen, npcColor } = useGameStore()
