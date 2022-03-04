@@ -15,8 +15,9 @@ const QuestGuide = () => {
         className='absolute h-screen w-screen top-0 left-0 z-10'
       >
         {chosenNpc && (
-          <div className='absolute bottom-0 left-0 p-10 text-2xl bg-black text-yellow-300'>
-            <p>{chosenNpc.dialogs[0].question}</p>
+          <div className='absolute bottom-0 left-0 p-10 text-2xl bg-black text-left grid gap-5'>
+            <p className='text-yellow-300'>{`${chosenNpc.name}: ${chosenNpc.dialogs[0].question}`}</p>
+            <p className='text-white'>{`Þú: ${chosenNpc.dialogs[0].answer}`}</p>
           </div>
         )}
       </button>
