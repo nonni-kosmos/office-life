@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useLoader, useThree } from '@react-three/fiber'
+import { useLoader } from '@react-three/fiber'
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import { INpc } from '../../types'
@@ -14,6 +14,7 @@ const Model = ({ active, npc }: IModel) => {
   const materials = useLoader(MTLLoader, npc.model.mtl)
   const object = useLoader(OBJLoader, npc.model.obj, (loader) => {
     materials.preload()
+
     loader.setMaterials(materials)
   })
 
