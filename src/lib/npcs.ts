@@ -29,7 +29,7 @@ export const npcs: INpc[] = [
       mtl: '/models/npcs/haflidi/model.mtl',
     },
     dialogs: [
-      { question: 'blabla?', answer: 'OK' },
+      { question: 'Það verður einhver að bjarga Steina, hann þarf booster eftir fús tap', answer: 'OK' },
       { question: 'blab!!!', answer: 'NO' },
     ],
     position: [0.2, -1, -3],
@@ -63,7 +63,7 @@ export const npcs: INpc[] = [
       mtl: '/models/npcs/sunna/model.mtl',
     },
     dialogs: [
-      { question: 'blabla?', answer: 'OK' },
+      { question: 'Alltaf eitthvað sniðugt í eldhúsinu', answer: 'OK' },
       { question: 'blab!!!', answer: 'NO' },
     ],
     position: [0.2, -3, -3],
@@ -78,7 +78,7 @@ export const npcs: INpc[] = [
       mtl: '/models/npcs/bjartur/model.mtl',
     },
     dialogs: [
-      { question: 'blabla?', answer: 'OK' },
+      { question: 'Ekki trufla er að HAKKA', answer: 'OK' },
       { question: 'blab!!!', answer: 'NO' },
     ],
     position: [0.4, -10, 3],
@@ -93,7 +93,7 @@ export const npcs: INpc[] = [
       mtl: '/models/npcs/thorhildur/model.mtl',
     },
     dialogs: [
-      { question: 'blabla?', answer: 'OK' },
+      { question: 'Vertu velkominn í JÚNÍVERSINN', answer: 'OK' },
       { question: 'blab!!!', answer: 'NO' },
     ],
     position: [0.4, -10, 3],
@@ -111,7 +111,7 @@ export const npcsKitchen: INpc[] = [
       mtl: '/models/npcs/brian/model.mtl',
     },
     dialogs: [
-      { question: 'blabla?', answer: 'OK' },
+      { question: 'Þettta er senior fundur pjakkur', answer: 'OK' },
       { question: 'blab!!!', answer: 'NO' },
     ],
     position: [0, -3, -3],
@@ -141,7 +141,7 @@ export const npcsKitchen: INpc[] = [
       mtl: '/models/npcs/stefan/model.mtl',
     },
     dialogs: [
-      { question: 'blabla?', answer: 'OK' },
+      { question: 'Þessar hendur eru EVIL', answer: 'OK' },
       { question: 'blab!!!', answer: 'NO' },
     ],
     position: [0.2, -2, -3],
