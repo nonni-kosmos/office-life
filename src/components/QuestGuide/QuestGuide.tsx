@@ -1,5 +1,4 @@
 import React from 'react'
-import { Canvas } from '@react-three/fiber'
 import { useGameStore } from '@src/lib/store'
 import { npcs } from '@src/lib/npcs'
 
@@ -12,10 +11,10 @@ const QuestGuide = () => {
     return (
       <button
         onClick={() => toggleQuestDialog(false)}
-        className='absolute h-screen w-screen top-0 left-0 z-10'
+        className='h-full w-full'
       >
         {chosenNpc && (
-          <div className='absolute bottom-0 left-0 p-10 text-2xl bg-black text-left grid gap-5'>
+          <div className='absolute bottom-0 left-0 p-10 text-2xl bg-black text-left grid gap-5 '>
             <p className='text-yellow-300'>{`${chosenNpc.name}: ${chosenNpc.dialogs[0].question}`}</p>
             <p className='text-white'>{`Þú: ${chosenNpc.dialogs[0].answer}`}</p>
           </div>

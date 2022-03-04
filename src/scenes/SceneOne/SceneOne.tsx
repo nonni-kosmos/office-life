@@ -13,19 +13,19 @@ const store = [
     position: [10, 0, -15],
     panoramaUrl: '/office-life-excelent.jpeg',
     clickZoneUrl: '/color-hotmap.png',
-    npcs: npcs
+    npcs: npcs,
   },
   {
     name: 'Scene2',
     position: [10, 0, -15],
     panoramaUrl: '/scene2.jpg',
     clickZoneUrl: '/scene2-click.jpg',
-    npcs: npcsKitchen
+    npcs: npcsKitchen,
   },
 ]
 
 const SceneOne = () => {
-  const [selectedScene, setSelectedScene] = useState(1)
+  const [selectedScene, setSelectedScene] = useState(0)
   const [canClick, setCanClick] = useState(false)
 
   const { toggleNpcColor, toggleQuestDialog } = useGameStore()
@@ -166,9 +166,8 @@ const SceneOne = () => {
       >
         <Preload />
         <Panorama />
- 
-        <QuestScene npcs={store[selectedScene].npcs}/>
 
+        <QuestScene npcs={store[selectedScene].npcs} />
 
         <Hotspots />
       </Suspense>

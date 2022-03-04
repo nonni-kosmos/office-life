@@ -108,7 +108,7 @@ export const npcsKitchen: INpc[] = [
       mtl: '/models/items/paskabjor/bjor.mtl',
     },
     dialogs: [
-      { question: 'blabla?', answer: 'OK' },
+      { question: 'Góður bjór', answer: 'OK' },
       { question: 'blab!!!', answer: 'NO' },
     ],
     position: [0.2, -1, -3],
