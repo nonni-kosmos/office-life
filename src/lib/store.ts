@@ -5,6 +5,8 @@ interface IStore {
   toggleNpcColor: (color: string) => void
   questDialogOpen: boolean
   toggleQuestDialog: (active: boolean) => void
+  activeScene: number
+  toggleActiveScene: () => void
 }
 
 export const useGameStore = create<IStore>((set) => ({
@@ -20,5 +22,12 @@ export const useGameStore = create<IStore>((set) => ({
     set((store) => ({
       questDialogOpen: active,
       npcColor: !active ? '' : store.npcColor,
+    })),
+
+  // scene
+  activeScene: 0,
+  toggleActiveScene: () =>
+    set((store) => ({
+      activeScene: store.activeScene === 0 ? 1 : 0,
     })),
 }))

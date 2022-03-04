@@ -13,26 +13,25 @@ const store = [
     position: [10, 0, -15],
     panoramaUrl: '/office-life-excelent.jpeg',
     clickZoneUrl: '/color-hotmap.png',
-    npcs: npcs
+    npcs: npcs,
   },
   {
     name: 'Scene2',
     position: [10, 0, -15],
     panoramaUrl: '/scene2.jpg',
     clickZoneUrl: '/scene2-click.jpg',
-    npcs: npcsKitchen
+    npcs: npcsKitchen,
   },
 ]
 
 const SceneOne = () => {
-  const [selectedScene, setSelectedScene] = useState(0)
   const [canClick, setCanClick] = useState(false)
 
-  const { toggleNpcColor, toggleQuestDialog } = useGameStore()
+  const { toggleNpcColor, toggleQuestDialog, activeScene, toggleActiveScene } = useGameStore()
 
   const Hotspots = () => {
     const [canvasCreated, setCanvasCreated] = useState(false)
-    const texture = useLoader(THREE.TextureLoader, store[selectedScene].clickZoneUrl) // prettier-ignore
+    const texture = useLoader(THREE.TextureLoader, store[activeScene].clickZoneUrl) // prettier-ignore
     let canvas2d: CanvasRenderingContext2D | null = null
 
     const raycaster = new THREE.Raycaster()
@@ -102,8 +101,8 @@ const SceneOne = () => {
                 toggleNpcColor(colorCheck)
                 break
                 case ColorMap.WHITE:
-                  setCanClick(true)
-                  toggleNpcColor(colorCheck)
+                  toggleNpcColor('')
+                  toggleActiveScene()
                   break
               default:
                 toggleNpcColor('')
@@ -142,19 +141,19 @@ const SceneOne = () => {
   }
 
   const Panorama = () => {
-    const map = useLoader(THREE.TextureLoader, store[selectedScene].panoramaUrl) // prettier-ignore
+    const map = useLoader(THREE.TextureLoader, store[activeScene].panoramaUrl) // prettier-ignore
 
     return (
       <mesh scale={[-1, 1, 1]}>
         <sphereBufferGeometry args={[500, 60, 40]} />
-        <meshBasicMaterial map={map} side={THREE.BackSide} />
+        <meshBasicMaterial map={map} side={THREE.BackSide} opacity={1} />
       </mesh>
     )
   }
 
   const Preload = () => {
     const { gl } = useThree()
-    const map = useLoader(THREE.TextureLoader, store[selectedScene].panoramaUrl) // prettier-ignore
+    const map = useLoader(THREE.TextureLoader, store[activeScene].panoramaUrl) // prettier-ignore
     useEffect(() => gl.initTexture(map), [map])
     return null
   }
@@ -170,14 +169,13 @@ const SceneOne = () => {
       >
         <Preload />
         <Panorama />
- 
-        <QuestScene npcs={store[selectedScene].npcs}/>
 
+        <QuestScene npcs={store[activeScene].npcs} />
 
         <Hotspots />
       </Suspense>
       <ambientLight intensity={1} />
-      <OrbitControls enableZoom />
+      <OrbitControls enableZoom autoRotate={false} autoRotateSpeed={0.2} />
     </Canvas>
   )
 }
