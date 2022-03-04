@@ -1,4 +1,4 @@
-import { INpc, ColorNames } from '../types'
+import { INpc, ColorNames, ColorNames2 } from '../types'
 import { ColorMap, IndexMap } from '@src/utlis'
 
 export const npcs: INpc[] = [
@@ -79,6 +79,54 @@ export const npcs: INpc[] = [
       { question: 'blab!!!', answer: 'NO' },
     ],
     position: [0.4, -10, 3],
+    scale: 1.5,
+  },
+]
+
+export const npcsKitchen: INpc[] = [
+  {
+    name: 'Brian',
+    idx: IndexMap.YELLOW,
+    color: ColorMap.YELLOW,
+    model: {
+      obj: '/models/npcs/brian/model.obj',
+      mtl: '/models/npcs/brian/model.mtl',
+    },
+    dialogs: [
+      { question: 'blabla?', answer: 'OK' },
+      { question: 'blab!!!', answer: 'NO' },
+    ],
+    position: [0.2, -1, -3],
+    scale: 1.5,
+  },
+  {
+    name: 'paskabjor',
+    idx: IndexMap.AQUA,
+    color: ColorMap.AQUA,
+    model: {
+      obj: '/models/items/paskabjor/bjor.obj',
+      mtl: '/models/items/paskabjor/bjor.mtl',
+    },
+    dialogs: [
+      { question: 'blabla?', answer: 'OK' },
+      { question: 'blab!!!', answer: 'NO' },
+    ],
+    position: [0.2, -1, -3],
+    scale: 1.5,
+  },
+  {
+    name: 'stefan',
+    idx: IndexMap.PINK,
+    color: ColorMap.PINK,
+    model: {
+      obj: '/models/npcs/stefan/model.obj',
+      mtl: '/models/npcs/stefan/model.mtl',
+    },
+    dialogs: [
+      { question: 'blabla?', answer: 'OK' },
+      { question: 'blab!!!', answer: 'NO' },
+    ],
+    position: [0.2, -1, -3],
     scale: 1.5,
   },
 ]
