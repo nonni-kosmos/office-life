@@ -25,7 +25,7 @@ const store = [
 ]
 
 const SceneOne = () => {
-  const [selectedScene, setSelectedScene] = useState(1)
+  const [selectedScene, setSelectedScene] = useState(0)
   const [canClick, setCanClick] = useState(false)
 
   const { toggleNpcColor, toggleQuestDialog } = useGameStore()
@@ -101,6 +101,10 @@ const SceneOne = () => {
                 setCanClick(true)
                 toggleNpcColor(colorCheck)
                 break
+                case ColorMap.WHITE:
+                  setCanClick(true)
+                  toggleNpcColor(colorCheck)
+                  break
               default:
                 toggleNpcColor('')
                 setCanClick(false)

@@ -4,20 +4,17 @@ export type Dialoge = {
   answer: string
 }
 
-export type ColorNames = "YELLOW" | "GREEN" | "RED" | "AQUA" | "PINK"
-export type ColorNames2 = "YELLOW" | "AQUA" | "PINK"
+export type ColorNames = 'YELLOW' | 'GREEN' | 'RED' | 'AQUA' | 'PINK' | 'WHITE'
+export type ColorNames2 = 'YELLOW' | 'AQUA' | 'PINK' | 'WHITE'
 
 export interface INpc {
-
-    name: string
-    idx: number
-    color: ColorMap
-    model: {
-      obj: string
-      mtl: string
-    }
-    dialogs: Dialoge[]
-    position: number[]
+  name: string
+  idx: number
+  color: ColorMap
+  model: {
+    obj: string
+    mtl: string
   }
-
-
+  dialogs: Dialoge[]
+  position: number[]
+}
