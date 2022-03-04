@@ -25,9 +25,22 @@ const store = [
 ]
 
 const SceneOne = () => {
-  const [canClick, setCanClick] = useState(false)
+  const {
+    toggleNpcColor,
+    toggleQuestDialog,
+    activeScene,
+    toggleActiveScene,
+    npcColor,
+    questDialogOpen,
+  } = useGameStore()
 
-  const { toggleNpcColor, toggleQuestDialog, activeScene, toggleActiveScene } = useGameStore()
+  const [currColor, setCurrColor] = useState('000')
+
+  const handleColor = (colorCheck: string) => {
+    setCurrColor(colorCheck)
+    // setCanClick(true)
+    // setCanSwitchScene(false)
+  }
 
   const Hotspots = () => {
     const [canvasCreated, setCanvasCreated] = useState(false)
@@ -79,48 +92,23 @@ const SceneOne = () => {
             colorCheck += pixel[1] > 100 ? '1' : '0'
             colorCheck += pixel[2] > 100 ? '1' : '0'
 
-            switch (colorCheck) {
-              case ColorMap.YELLOW:
-                setCanClick(true)
-                toggleNpcColor(colorCheck)
-                break
-              case ColorMap.GREEN:
-                setCanClick(true)
-                toggleNpcColor(colorCheck)
-                break
-              case ColorMap.RED:
-                setCanClick(true)
-                toggleNpcColor(colorCheck)
-                break
-              case ColorMap.AQUA:
-                setCanClick(true)
-                toggleNpcColor(colorCheck)
-                break
-              case ColorMap.PINK:
-                setCanClick(true)
-                toggleNpcColor(colorCheck)
-                break
-              case ColorMap.BLUE:
-                setCanClick(true)
-                toggleNpcColor(colorCheck)
-                break
-                // case ColorMap.WHITE:
-                //   toggleNpcColor('')
-                //   toggleActiveScene()
-                //   break
-              default:
-                toggleNpcColor('')
-                setCanClick(false)
-            }
+            handleColor(colorCheck)
           }
         }
       }
     }
 
     const handleClick = () => {
-      if (canClick) {
+      if (npcColor === '111') {
+        toggleNpcColor('000')
+        toggleQuestDialog(false)
+        toggleActiveScene()
+      } else if (npcColor !== '000') {
+        toggleNpcColor(currColor)
         toggleQuestDialog(true)
-      } 
+      } else if (questDialogOpen) {
+        toggleQuestDialog(false)
+      }
     }
 
     useEffect(() => {

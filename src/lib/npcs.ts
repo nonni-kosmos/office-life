@@ -129,7 +129,7 @@ export const npcsKitchen: INpc[] = [
       { question: 'Góður bjór', answer: 'OK' },
       { question: 'blab!!!', answer: 'NO' },
     ],
-    position: [0, 0, 10],
+    position: [30, 0, 10],
     scale: 1.5,
   },
   {
