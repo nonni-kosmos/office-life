@@ -21,7 +21,6 @@ export const useGameStore = create<IStore>((set) => ({
   toggleQuestDialog: (active) =>
     set((store) => ({
       questDialogOpen: active,
-      npcColor: !active ? '' : store.npcColor,
     })),
 
   // scene

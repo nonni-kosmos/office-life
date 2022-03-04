@@ -17,14 +17,11 @@ const Model = ({ active, npc }: IModel) => {
     loader.setMaterials(materials)
   })
 
-  const { camera } = useThree()
-
   object.rotation.set(npc.position[0], npc.position[1], npc.position[2])
   const VISIBLE = npc.scale
 
   const { questDialogOpen, npcColor } = useGameStore()
 
-  console.log(npc.name, active, questDialogOpen)
   useEffect(() => {
     if (active && questDialogOpen) {
       object.scale.set(VISIBLE, VISIBLE, VISIBLE)

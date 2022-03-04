@@ -5,7 +5,7 @@ import * as THREE from 'three'
 import QuestScene from '../QuestScene'
 import { useGameStore } from '@src/lib/store'
 import { npcs, npcsKitchen } from '@src/lib/npcs'
-import { ColorMap } from '@src/utlis'
+import { colorCheck, ColorMap } from '@src/utlis'
 
 const store = [
   {
@@ -36,10 +36,22 @@ const SceneOne = () => {
 
   const [currColor, setCurrColor] = useState('000')
 
+  const [canClick, setCanClick] = useState(false)
+  const [canGoToKitchen, setCanGoToKitchen] = useState(false)
+
   const handleColor = (colorCheck: string) => {
-    setCurrColor(colorCheck)
-    // setCanClick(true)
-    // setCanSwitchScene(false)
+    if (colorCheck !== '000' && colorCheck !== '' && colorCheck !== '111') {
+      console.log('color checkit: ', colorCheck)
+      setCanClick(true)
+      toggleNpcColor(colorCheck)
+      setCanGoToKitchen(false)
+    } else if (colorCheck === '111') {
+      setCanGoToKitchen(true)
+      setCanClick(false)
+    } else {
+      setCanClick(false)
+      setCanGoToKitchen(false)
+    }
   }
 
   const Hotspots = () => {
@@ -91,7 +103,6 @@ const SceneOne = () => {
             colorCheck += pixel[0] > 100 ? '1' : '0'
             colorCheck += pixel[1] > 100 ? '1' : '0'
             colorCheck += pixel[2] > 100 ? '1' : '0'
-
             handleColor(colorCheck)
           }
         }
@@ -99,15 +110,12 @@ const SceneOne = () => {
     }
 
     const handleClick = () => {
-      if (npcColor === '111') {
-        toggleNpcColor('000')
-        toggleQuestDialog(false)
-        toggleActiveScene()
-      } else if (npcColor !== '000') {
-        toggleNpcColor(currColor)
+      if (canClick) {
         toggleQuestDialog(true)
-      } else if (questDialogOpen) {
-        toggleQuestDialog(false)
+      } else if (canGoToKitchen) {
+        toggleActiveScene()
+      } else {
+        toggleNpcColor('')
       }
     }
 

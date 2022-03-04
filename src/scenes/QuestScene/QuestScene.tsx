@@ -14,8 +14,6 @@ const QuestScene = ({ npcs }: IQuestScene) => {
   return (
     <>
       {npcs.map((npc, key) => {
-        console.log('quest', npcColor === npc.color && questDialogOpen)
-
         return (
           <Model
             npc={npc}
