@@ -42,7 +42,7 @@ export const npcs: INpc[] = [
       { question: 'blabla?', answer: 'OK' },
       { question: 'blab!!!', answer: 'NO' },
     ],
-    position: [0.2, -1, -3],
+    position: [-12, -6, 16],
   },
   {
     name: 'Sunna',
@@ -70,7 +70,7 @@ export const npcs: INpc[] = [
       { question: 'blabla?', answer: 'OK' },
       { question: 'blab!!!', answer: 'NO' },
     ],
-    position: [0.2, -1, -3],
+    position: [0.4, -10, 3],
   },
 ]
 
