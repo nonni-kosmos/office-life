@@ -84,6 +84,21 @@ export const npcs: INpc[] = [
     position: [0.4, -10, 3],
     scale: 3,
   },
+  {
+    name: 'Þórhildur',
+    idx: IndexMap.BLUE,
+    color: ColorMap.BLUE,
+    model: {
+      obj: '/models/npcs/thorhildur/model.obj',
+      mtl: '/models/npcs/thorhildur/model.mtl',
+    },
+    dialogs: [
+      { question: 'blabla?', answer: 'OK' },
+      { question: 'blab!!!', answer: 'NO' },
+    ],
+    position: [0.4, -10, 3],
+    scale: 3,
+  },
 ]
 
 export const npcsKitchen: INpc[] = [

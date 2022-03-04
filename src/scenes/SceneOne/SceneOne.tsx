@@ -100,10 +100,14 @@ const SceneOne = () => {
                 setCanClick(true)
                 toggleNpcColor(colorCheck)
                 break
-                case ColorMap.WHITE:
-                  toggleNpcColor('')
-                  toggleActiveScene()
-                  break
+              case ColorMap.BLUE:
+                setCanClick(true)
+                toggleNpcColor(colorCheck)
+                break
+                // case ColorMap.WHITE:
+                //   toggleNpcColor('')
+                //   toggleActiveScene()
+                //   break
               default:
                 toggleNpcColor('')
                 setCanClick(false)
@@ -116,7 +120,7 @@ const SceneOne = () => {
     const handleClick = () => {
       if (canClick) {
         toggleQuestDialog(true)
-      }
+      } 
     }
 
     useEffect(() => {

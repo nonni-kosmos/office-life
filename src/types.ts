@@ -4,7 +4,7 @@ export type Dialoge = {
   answer: string
 }
 
-export type ColorNames = 'YELLOW' | 'GREEN' | 'RED' | 'AQUA' | 'PINK' | 'WHITE'
+export type ColorNames = 'YELLOW' | 'GREEN' | 'RED' | 'AQUA' | 'PINK' | "BLUE" | 'WHITE'
 export type ColorNames2 = 'YELLOW' | 'AQUA' | 'PINK' | 'WHITE'
 
 export interface INpc {

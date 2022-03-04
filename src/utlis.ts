@@ -4,7 +4,8 @@ export enum ColorMap {
   RED = '100',
   AQUA = '011',
   PINK = '101',
-  WHITE = '111'
+  WHITE = '111',
+  BLUE = '001'
 }
 
 export enum IndexMap {
@@ -13,7 +14,8 @@ export enum IndexMap {
   RED = 3,
   AQUA = 4,
   PINK = 5,
-  WHITE = 0
+  WHITE = 0,
+  BLUE = 6
 }
 
 
